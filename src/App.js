@@ -34,8 +34,8 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <div>
-        <GetUsers/>
         <Form/>
+        <GetUsers/>
       </div>
     </ApolloProvider>
   );

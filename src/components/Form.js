@@ -7,14 +7,18 @@ export default function Form() {
     email: "",
     password: "",
   });
+  const addUser =()=>{
+
+  }
   const [error, setError] = useState(false);
+
   const handleChange = (e) => {
     setUser((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
-  console.log(user);
+
   return (
     <div className="form">
-      <h1>Add New Book</h1>
+      <h1>Add New User</h1>
       <input
         type="text"
         placeholder="First Name"
@@ -39,7 +43,7 @@ export default function Form() {
         name="password"
         onChange={handleChange}
       />
-      <button >Add</button>
+      <button onClick={addUser}>Add</button>
       {error && "Something went wrong!"}
     </div>
   );
