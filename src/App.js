@@ -7,14 +7,6 @@ import {
 } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
 import "./App.css";
-const ddd = {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  HttpLink,
-  from,
-  onError,
-};
 
 const errorLink = onError(({ graphqlErrors, networkErrors }) => {
   if (graphqlErrors) {
