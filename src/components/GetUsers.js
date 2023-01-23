@@ -6,7 +6,6 @@ export default function GetUsers() {
   const { error, loading, data } = useQuery(LOAD_USERS);
   const [users, setUsers] = useState([]);
 
-  console.log(users);
   useEffect(() => {
     if (data) {
       setUsers(data.getAllUsers);
@@ -16,7 +15,7 @@ export default function GetUsers() {
     <div>
       <div>
         {
-            users?.slice(0,200).map((u)=>(
+            users?.slice(0,20).map((u)=>(
                 <div key={u.id}>
                     {u.email}
                 </div>
