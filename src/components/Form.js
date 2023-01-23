@@ -1,4 +1,6 @@
+import { useMutation } from "@apollo/client";
 import React, { useState } from "react";
+import { CREATE_USER_MUTATION } from "../GraphQL/Mutations";
 
 export default function Form() {
   const [user, setUser] = useState({
@@ -7,10 +9,21 @@ export default function Form() {
     email: "",
     password: "",
   });
-  const addUser =()=>{
-
+  const [createUser, { error }] = useMutation(CREATE_USER_MUTATION);
+  const addUser = () => {
+    createUser({
+      variables: {
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        password: user.password,
+      },
+    });
+  };
+  if (error) {
+    console.log(error);
   }
-  const [error, setError] = useState(false);
+  //   const [error, setError] = useState(false);
 
   const handleChange = (e) => {
     setUser((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -38,7 +51,7 @@ export default function Form() {
         onChange={handleChange}
       />
       <input
-        type="password"
+        type="text"
         placeholder="Password"
         name="password"
         onChange={handleChange}
